@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lucas Neves — Contato</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Estilos específicos da página Contato */
+
+    /* Layout de duas colunas: formulário + informações */
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    /* Cartão de informação de contato */
+    .contact-info-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .contact-info-item:last-child { border-bottom: none; }
+
+    .contact-icon {
+      font-size: 1.5rem;
+      min-width: 40px;
+      text-align: center;
+    }
+
+    .contact-info-item .info-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--text-muted);
+    }
+
+    .contact-info-item .info-value {
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .contact-info-item a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    /* Redes sociais */
+    .social-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .social-link {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 1rem;
+      background: var(--bg2);
+      border-radius: 8px;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 0.9rem;
+      font-weight: 500;
+      border: 1px solid var(--border);
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .social-link:hover {
+      background: var(--accent2);
+      transform: translateX(4px);
+    }
+
+    @media (max-width: 700px) {
+      .contact-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAVEGAÇÃO ===== -->
+  <nav>
+    <div class="nav-inner">
+      <a class="nav-logo" href="index.html">Lucas Neves</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Sobre mim</a></li>
+        <li><a href="formacao.html">Formação</a></li>
+        <li><a href="portfolio.html">Portfólio</a></li>
+        <li><a href="contato.html">Contato</a></li>
+      </ul>
+      <button id="theme-toggle">☾ Escuro</button>
+      <button class="hamburger" aria-label="Abrir menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== CONTEÚDO PRINCIPAL ===== -->
+  <main>
+
+    <div class="page-header">
+      <h1>Contato</h1>
+      <p>Vamos conversar! Estou aberto a oportunidades e colaborações.</p>
+    </div>
+
+    <div class="contact-layout">
+
+      <!-- Formulário de contato -->
+      <div class="card">
+        <h2 style="font-family:'Playfair Display',serif; font-size:1.4rem; margin-bottom:1.5rem;">Envie uma mensagem</h2>
+
+        <!-- O formulário usa JavaScript puro para validação — sem action/method real -->
+        <div id="contact-form">
+
+          <!-- Campo: Nome -->
+          <div class="form-group" id="group-nome">
+            <label for="nome">Nome completo</label>
+            <input type="text" id="nome" placeholder="Seu nome" autocomplete="name" />
+            <span class="error-msg">Por favor, informe seu nome.</span>
+          </div>
+
+          <!-- Campo: E-mail -->
+          <div class="form-group" id="group-email">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" placeholder="seu@email.com" autocomplete="email" />
+            <span class="error-msg">Informe um e-mail válido (ex: usuario@dominio.com).</span>
+          </div>
+
+          <!-- Campo: Mensagem -->
+          <div class="form-group" id="group-mensagem">
+            <label for="mensagem">Mensagem</label>
+            <textarea id="mensagem" rows="5" placeholder="Como posso te ajudar?"></textarea>
+            <span class="error-msg">Por favor, escreva sua mensagem.</span>
+          </div>
+
+          <button class="btn" id="btn-enviar" onclick="enviarFormulario()">Enviar mensagem</button>
+        </div>
+      </div>
+
+      <!-- Informações de contato -->
+      <div>
+        <div class="card" style="margin-bottom: 1.5rem;">
+          <h2 style="font-family:'Playfair Display',serif; font-size:1.2rem; margin-bottom:1rem;">Informações</h2>
+
+          <div class="contact-info-item">
+            <div class="contact-icon">📧</div>
+            <div>
+              <div class="info-label">E-mail</div>
+              <div class="info-value"><a href="mailto:lucasnevs.dev@gmail.com">lucasnevs.dev@gmail.com</a></div>
+            </div>
+          </div>
+
+          <div class="contact-info-item">
+            <div class="contact-icon">📍</div>
+            <div>
+              <div class="info-label">Localização</div>
+              <div class="info-value">Gravataí, RS</div>
+            </div>
+          </div>
+
+          <div class="contact-info-item">
+            <div class="contact-icon">🎓</div>
+            <div>
+              <div class="info-label">Curso</div>
+              <div class="info-value">Engenharia de Software — UNINTER</div>
+            </div>
+          </div>
+
+          <div class="contact-info-item">
+            <div class="contact-icon">💼</div>
+            <div>
+              <div class="info-label">Disponibilidade</div>
+              <div class="info-value">Estágio / Freela</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Links de redes sociais -->
+        <div class="card">
+          <h2 style="font-family:'Playfair Display',serif; font-size:1.2rem; margin-bottom:1rem;">Redes Sociais</h2>
+          <div class="social-links">
+            <a href="https://github.com/JustLukeAtMe" target="_blank" class="social-link">
+              🐙 <span>GitHub</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Modal de confirmação de envio -->
+  <div class="modal-overlay" id="modal">
+    <div class="modal-box">
+      <h2>✅ Mensagem enviada!</h2>
+      <p>Obrigado por entrar em contato, <strong id="modal-nome"></strong>! Responderei em breve.</p>
+      <button class="btn" onclick="fecharModal()">Fechar</button>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 Lucas Neves · Engenharia de Software</p>
+  </footer>
+
+  <script src="nav.js"></script>
+
+  <!-- ===== VALIDAÇÃO E ENVIO DO FORMULÁRIO ===== -->
+  <script>
+    /**
+     * Valida o formulário de contato e simula o envio.
+     * Regras:
+     *  - Nome: obrigatório e não vazio
+     *  - E-mail: obrigatório e formato válido (regex)
+     *  - Mensagem: obrigatória e não vazia
+     */
+    function enviarFormulario() {
+      var nome     = document.getElementById('nome').value.trim();
+      var email    = document.getElementById('email').value.trim();
+      var mensagem = document.getElementById('mensagem').value.trim();
+
+      // Limpa estados de erro anteriores
+      limparErros();
+
+      var valido = true;
+
+      // Validação do nome
+      if (nome === '') {
+        marcarInvalido('group-nome');
+        valido = false;
+      }
+
+      // Validação do e-mail com expressão regular
+      // Formato aceito: texto@texto.texto
+      var regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (email === '' || !regexEmail.test(email)) {
+        marcarInvalido('group-email');
+        valido = false;
+      }
+
+      // Validação da mensagem
+      if (mensagem === '') {
+        marcarInvalido('group-mensagem');
+        valido = false;
+      }
+
+      // Se tudo válido: simula envio, limpa campos e abre modal
+      if (valido) {
+        // Preenche o nome no modal de confirmação
+        document.getElementById('modal-nome').textContent = nome;
+
+        // Limpa os campos do formulário após envio
+        document.getElementById('nome').value     = '';
+        document.getElementById('email').value    = '';
+        document.getElementById('mensagem').value = '';
+
+        // Exibe o modal de confirmação
+        document.getElementById('modal').classList.add('open');
+      }
+    }
+
+    /** Adiciona a classe "invalid" ao grupo do campo com erro */
+    function marcarInvalido(grupoId) {
+      document.getElementById(grupoId).classList.add('invalid');
+    }
+
+    /** Remove todas as marcações de erro */
+    function limparErros() {
+      document.querySelectorAll('.form-group').forEach(function(grupo) {
+        grupo.classList.remove('invalid');
+      });
+    }
+
+    /** Fecha o modal de confirmação */
+    function fecharModal() {
+      document.getElementById('modal').classList.remove('open');
+    }
+
+    // Fecha o modal ao clicar fora da caixa
+    document.getElementById('modal').addEventListener('click', function(e) {
+      if (e.target === this) fecharModal();
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lucas Neves — Portfólio</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Estilos específicos da página Portfólio */
+
+    /* Grid de projetos */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    /* Card de projeto */
+    .project-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: var(--card-shadow);
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 36px rgba(0,0,0,0.15);
+    }
+
+    /* Banner colorido do card */
+    .project-banner {
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+    }
+
+    /* Cores alternadas para os banners */
+    .banner-1 { background: linear-gradient(135deg, #c0392b 0%, #e74c3c 100%); }
+    .banner-2 { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); }
+    .banner-3 { background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%); }
+    .banner-4 { background: linear-gradient(135deg, #2980b9 0%, #3498db 100%); }
+
+    .project-body {
+      padding: 1.5rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-body h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-body p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      flex: 1;
+      margin-bottom: 1rem;
+    }
+
+    .project-tags {
+      margin-bottom: 1rem;
+    }
+
+    /* Links do projeto */
+    .project-links {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .project-links a {
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      padding: 0.4rem 1rem;
+      border-radius: 6px;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    /* Botão primário (ver projeto) */
+    .link-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+    .link-primary:hover { background: #a93226; }
+
+    /* Botão secundário (ver código) */
+    .link-secondary {
+      background: var(--bg2);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .link-secondary:hover { background: var(--accent2); }
+
+    /* Filtro por tecnologia */
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .filter-btn {
+      background: var(--bg2);
+      border: 1.5px solid var(--border);
+      border-radius: 50px;
+      padding: 0.35rem 1rem;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: 'DM Sans', sans-serif;
+      color: var(--text);
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAVEGAÇÃO ===== -->
+  <nav>
+    <div class="nav-inner">
+      <a class="nav-logo" href="index.html">Lucas Neves</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Sobre mim</a></li>
+        <li><a href="formacao.html">Formação</a></li>
+        <li><a href="portfolio.html">Portfólio</a></li>
+        <li><a href="contato.html">Contato</a></li>
+      </ul>
+      <button id="theme-toggle">☾ Escuro</button>
+      <button class="hamburger" aria-label="Abrir menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== CONTEÚDO PRINCIPAL ===== -->
+  <main>
+
+    <div class="page-header">
+      <h1>Portfólio</h1>
+      <p>Projetos desenvolvidos durante minha jornada na programação</p>
+    </div>
+
+    <!-- Filtros por tecnologia -->
+    <div class="filter-bar" id="filter-bar">
+      <button class="filter-btn active" data-filter="todos">Todos</button>
+      <button class="filter-btn" data-filter="html">HTML/CSS</button>
+      <button class="filter-btn" data-filter="js">JavaScript</button>
+      <button class="filter-btn" data-filter="python">Python</button>
+    </div>
+
+    <!-- Grade de projetos -->
+    <div class="projects-grid" id="projects-grid">
+
+      <!-- Projeto 1 -->
+      <div class="project-card" data-tech="html js">
+        <div class="project-banner banner-1">🧮</div>
+        <div class="project-body">
+          <h3>(Em desenvolvimento) Calculadora Web</h3>
+          <p>Calculadora responsiva desenvolvida com HTML, CSS e JavaScript puro. Suporta operações básicas e tem interface limpa com alternância de tema.</p>
+          <div class="project-tags">
+            <span class="tag">HTML5</span>
+            <span class="tag">CSS3</span>
+            <span class="tag">JavaScript</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/lucasneves" class="link-primary" target="_blank">Ver projeto</a>
+            <a href="https://github.com/lucasneves" class="link-secondary" target="_blank">Código</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Projeto 2 -->
+      <div class="project-card" data-tech="html js">
+        <div class="project-banner banner-2">📝</div>
+        <div class="project-body">
+          <h3>(Em desenvolvimento) To-Do List</h3>
+          <p>Aplicação de lista de tarefas com armazenamento em localStorage. Permite adicionar, remover e marcar tarefas como concluídas.</p>
+          <div class="project-tags">
+            <span class="tag">HTML5</span>
+            <span class="tag">CSS3</span>
+            <span class="tag">JavaScript</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/lucasneves" class="link-primary" target="_blank">Ver projeto</a>
+            <a href="https://github.com/lucasneves" class="link-secondary" target="_blank">Código</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Projeto 3 -->
+      <div class="project-card" data-tech="python">
+        <div class="project-banner banner-3">🐍</div>
+        <div class="project-body">
+          <h3>(Em desenvolvimento) Jogo da Forca - Python</h3>
+          <p>Jogo da forca em terminal desenvolvido em Python. Utiliza listas, funções e controle de fluxo. Projeto desenvolvido na disciplina de Algoritmos.</p>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Terminal</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/lucasneves" class="link-primary" target="_blank">Ver projeto</a>
+            <a href="https://github.com/lucasneves" class="link-secondary" target="_blank">Código</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Projeto 4 (este portfólio) -->
+      <div class="project-card" data-tech="html js">
+        <div class="project-banner banner-4">🌐</div>
+        <div class="project-body">
+          <h3>Portfólio Pessoal</h3>
+          <p>Este portfólio!</p>
+          <div class="project-tags">
+            <span class="tag">HTML5</span>
+            <span class="tag">CSS3</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">GitHub Pages</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/JustLukeAtMe" class="link-primary" target="_blank">Ver projeto</a>
+            <a href="https://github.com/JustLukeAtMe" class="link-secondary" target="_blank">Código</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Seção GitHub -->
+    <section class="card" style="text-align:center; padding: 2.5rem;">
+      <div style="font-size:2.5rem; margin-bottom:0.75rem;">🐙</div>
+      <h2 style="font-family:'Playfair Display',serif; margin-bottom:0.5rem;">Veja mais no GitHub</h2>
+      <p style="color:var(--text-muted); margin-bottom:1.5rem;">Todos os meus projetos, experimentos e estudos estão disponíveis no meu perfil.</p>
+      <a href="https://github.com/JustLukeAtMe" target="_blank" class="btn">Acessar GitHub</a>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2025 Lucas Neves · Engenharia de Software</p>
+  </footer>
+
+  <script src="nav.js"></script>
+
+  <!-- Script de filtro de projetos -->
+  <script>
+    // Seleciona todos os botões de filtro e cards de projeto
+    var filterBtns = document.querySelectorAll('.filter-btn');
+    var projectCards = document.querySelectorAll('.project-card');
+
+    filterBtns.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        // Remove "active" de todos os botões
+        filterBtns.forEach(function(b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+
+        var filter = btn.getAttribute('data-filter');
+
+        // Mostra ou esconde cards conforme o filtro selecionado
+        projectCards.forEach(function(card) {
+          var techs = card.getAttribute('data-tech');
+          if (filter === 'todos' || techs.includes(filter)) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
